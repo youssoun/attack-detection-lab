@@ -1,0 +1,35 @@
+{
+  "window_utc": "2026-09-06T22:35 - 22:52",
+  "alert_count": 31,
+  "rules_fired": {
+    "ET SCAN NMAP -sS window 1024": 2,
+    "ET EXPLOIT RST Flood With Window": 4,
+    "GPL SNMP request tcp": 7,
+    "GPL SNMP trap tcp": 7,
+    "ET SCAN Sqlmap SQL Injection Scan": 2,
+    "ETPRO WEB_SERVER SQLMap Scan Tool User Agent": 1,
+    "ETPRO INFO Observed EICAR Test File String Inbound": 1,
+    "ET INFO Wget User Agent": 1,
+    "ET INFO Python SimpleHTTP ServerBanner": 3,
+    "ET INFO HTTP Request on Unusual Port Possibly Hostile": 1,
+    "ET INFO Possible Kali Linux hostname in DHCP Request Packet": 1
+  },
+  "zeek_evidence": {
+    "dns_beacon": {
+      "events": 16,
+      "pattern": "qf1..qf15.c2b6.local",
+      "response_code": "NXDOMAIN",
+      "cadence_s": 3,
+      "transport": "udp",
+      "resolver": "8.8.8.8"
+    },
+    "conn": {
+      "masscan_flows": 401,
+      "note": "masscan SYN flood to the router captured in full, one flow per port in range 1-500"
+    }
+  },
+  "negative_results": {
+    "ssh_brute_force_hydra_200_attempts": "no alert, no SSH rule has ever fired on this sensor (30d history checked)",
+    "same_host_vm_to_vm": "zero events, traffic bridged internally on the hypervisor, round trip 27 microseconds, never reaches the SPAN"
+  }
+}
